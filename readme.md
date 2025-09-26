@@ -39,7 +39,6 @@ k6 run <script.js>
 - [k6 Documentation](https://k6.io/docs/)
 - [k6 Examples](https://github.com/k6io/k6-examples)
 
----
 
-Feel free to add scripts, scenarios, and more documentation!
+
 
