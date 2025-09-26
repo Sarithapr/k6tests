@@ -31,6 +31,8 @@ k6 run <script.js>
   `k6 run script.js`
 - Run with custom options:  
   `k6 run --vus 20 --duration 1m script.js`
+- Run with custom options:  
+  `K6_BROWSER_HEADLESS=false k6 run browser-script.js`
 
 ## Resources
 
@@ -40,3 +42,4 @@ k6 run <script.js>
 ---
 
 Feel free to add scripts, scenarios, and more documentation!
+
