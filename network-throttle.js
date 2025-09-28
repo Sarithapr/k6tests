@@ -1,4 +1,4 @@
-import { browser } from 'k6/browser';
+import { browser,networkProfiles} from 'k6/browser';
 import { check, sleep } from 'k6';
 
 export const options = {
@@ -22,10 +22,12 @@ export default async function () {
 
   try {
     await page.goto('https://quickpizza.grafana.com/', { waitUntil: 'load' });
-    const actualTitle = await page.title();
-    console.log('Actual page title:', actualTitle);
-    check(actualTitle, {
-      'Page title contains Quick Pizza': p => p.includes('QuickPizza')
+    page.throttleNetwork(networkProfiles['Fast 3G']);
+    sleep(1);
+    page.setViewportSize({ width: 700, height: 1000 });
+    console.log(await page.title());
+    check(page, {
+      'Page title contains Quick Pizza': (p) => p.title === 'QuickPizza'
     });
 
   } catch (e) {
@@ -37,5 +39,3 @@ export default async function () {
 
   sleep(1);
 }
-
-
